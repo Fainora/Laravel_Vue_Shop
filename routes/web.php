@@ -1,11 +1,12 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\ColorController;
-use App\Http\Controllers\TagController;
-use App\Http\Controllers\UserController;
-use App\Http\Controllers\ProductController;
+use App\Http\Controllers\Admin\Main\IndexController;
+use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\ColorController;
+use App\Http\Controllers\Admin\TagController;
+use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,11 +19,20 @@ use App\Http\Controllers\ProductController;
 |
 */
 
-Route::get('/', \App\Http\Controllers\Main\IndexController::class)->name('main.index');
+Route::get('/', function () {
+    return view('index');
+});
 
-Route::resource('categories', CategoryController::class);
-Route::resource('colors', ColorController::class);
-Route::resource('tags', TagController::class);
-Route::resource('users', UserController::class);
-Route::resource('products', ProductController::class);
+Route::prefix('admin')->namespace('App\Http\Controllers\Admin')->group(function() {
+    Route::get('/', IndexController::class)->name('main.index');
+    Route::resource('categories', CategoryController::class);
+    Route::resource('colors', ColorController::class);
+    Route::resource('tags', TagController::class);
+    Route::resource('users', UserController::class);
+    Route::resource('products', ProductController::class);
+});
 
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

@@ -1,0 +1,40 @@
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+
+// Variables
+@import 'variables';
+
+// Bootstrap
+@import 'bootstrap/scss/bootstrap';
+
+$font-stack:    Helvetica, sans-serif;
+
+:root {
+    --primary: #ccedf6;
+    --dark: #233506;
+    --light: #fff;
+    --bg: #f6feff;
+    --text: #7a9ac6;
+}
+
+body {
+    background: var(--bg);
+}
+
+.wrapper {
+    height: 100vh;
+}
+
+.main-content {
+    margin-left: 80px;
+    height: 100vh;
+}
+
+ul {
+    margin-left: 0;
+    padding-left: 0;
+}
+
+li {
+    list-style-type: none;
+}
