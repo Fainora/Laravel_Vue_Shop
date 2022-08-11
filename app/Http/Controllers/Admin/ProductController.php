@@ -55,6 +55,8 @@ class ProductController extends Controller
 
         if(isset($data['preview_image'])) {
             $data['preview_image'] = Storage::disk('public')->put('/images', $data['preview_image']);
+        } else {
+            $data['preview_image'] = '/images/nophoto.png';
         }
 
         if(isset($data['tags'])) {
@@ -125,10 +127,16 @@ class ProductController extends Controller
      */
     public function update(UpdateRequest $request, Product $product)
     {
+        if(isset($product->preview_image)) {
+            Storage::disk('public')->delete('images', $product->preview_image);
+        }
+
         $data = $request->validated();
 
         if(isset($data['preview_image'])) {
             $data['preview_image'] = Storage::disk('public')->put('/images', $data['preview_image']);
+        } else {
+            $data['preview_image'] = '/images/nophoto.png';
         }
 
         if(isset($data['tags'])) {
@@ -172,7 +180,9 @@ class ProductController extends Controller
     public function destroy(Product $product)
     {
         $product->delete();
-        Storage::disk('public')->delete('images', $product->preview_image);
+        if(isset($product->preview_image)) {
+            Storage::disk('public')->delete('images', $product->preview_image);
+        }
         $product->tags()->detach();
 
         return redirect()->route('products.index')->with('success','Product has been deleted successfully');

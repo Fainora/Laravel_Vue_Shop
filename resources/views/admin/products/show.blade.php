@@ -63,7 +63,7 @@
                                 </tr>
                                 <tr>
                                     <td>Изображение</td>
-                                    <td><img src="{{ Storage::url($product->preview_image ?? 'images/nophoto.jpg') }}" style='width: 100px'></td>
+                                    <td><img src="{{ Storage::url($product->preview_image ?? 'images/nophoto.png') }}" style='width: 100px'></td>
                                 </tr>
                                 <tr>
                                     <td>Категория</td>

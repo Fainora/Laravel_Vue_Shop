@@ -62,7 +62,7 @@
                                         <td>{!! $product->content !!}</td>
                                         <td>{{ $product->price }}</td>
                                         <td>{{ $product->count }}</td>
-                                        <td><img src="{{ Storage::url($product->preview_image ?? 'images/nophoto.jpg') }}" style='width: 100px'></td>
+                                        <td><img src="{{ Storage::url($product->preview_image ?? 'images/nophoto.png') }}" style='width: 100px'></td>
                                         {{-- <td>{{ $category->title }}</td> --}}
 
                                         <td>

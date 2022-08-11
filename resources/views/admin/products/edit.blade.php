@@ -64,7 +64,7 @@
 
                 <div class="form-group">
                     <div class="mb-3">
-                        <img src="{{ Storage::url($product->preview_image ?? 'images/nophoto.jpg') }}" alt="preview_image" class="w-25">
+                        <img src="{{ Storage::url($product->preview_image ?? 'images/nophoto.png') }}" alt="preview_image" class="w-25">
                     </div>
                     <div class="input-group">
                       <div class="custom-file">

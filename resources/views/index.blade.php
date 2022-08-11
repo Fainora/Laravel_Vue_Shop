@@ -6,22 +6,17 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>ZooShop</title>
     <!-- Scripts -->
-    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+    @vite(['resources/sass/app.scss', 'resources/js/app.js', 'resources/js/script.js'])
 </head>
 
 <body>
-<div id="app">
-    <div class="wrapper">
-        <!-- SIDEBAR -->
-        <v-sidebar></v-sidebar>
-        <div class="main-content">
-            <!-- NAVBAR -->
-            <v-header></v-header>
-            <!-- CONTENT -->
-            <v-content></v-content>
-        </div>
+    <div id="app">
+        <!-- NAVBAR -->
+        <v-navbar></v-navbar>
+        <!-- Content -->
+        <router-view></router-view>
+        <!-- Footer -->
+        <v-footer></v-footer>
     </div>
-    {{-- <example-component></example-component> --}}
-</div>
 </body>
 </html>
