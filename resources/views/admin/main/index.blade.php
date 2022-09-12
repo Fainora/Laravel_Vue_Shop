@@ -1,5 +1,7 @@
 @extends('admin.layouts.main')
 
+@section('title') {{'Dashboard'}} @endsection
+
 @section('content')
     <!-- Content Header (Page header) -->
     <div class="content-header">

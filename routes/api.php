@@ -1,6 +1,9 @@
 <?php
 
+use App\Http\Controllers\API\Blog\IndexController as BlogIndexController;
 use App\Http\Controllers\API\Product\IndexController;
+use App\Http\Controllers\API\Product\ShowController;
+use App\Jobs\ImportPost;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -20,3 +23,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('/products', IndexController::class);
+Route::get('/products/{product}', ShowController::class);
+
+// Route::get('/blog', BlogIndexController::class);

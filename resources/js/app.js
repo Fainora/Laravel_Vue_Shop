@@ -10,10 +10,10 @@ import router from './router';
 const app = createApp({});
 
 
-import NavbarComponent from './components/NavbarComponent.vue';
+import NavbarComponent from './pages/NavbarComponent.vue';
 app.component('v-navbar', NavbarComponent);
 
-import FooterComponent from './components/FooterComponent.vue';
+import FooterComponent from './pages/FooterComponent.vue';
 app.component('v-footer', FooterComponent);
 
 
@@ -21,4 +21,4 @@ app.config.globalProperties.axios = axios;
 
 library.add(fas, fab);
 
-app.component('font-awesome-icon', FontAwesomeIcon).use(router).mount('#app');
+app.component('fa', FontAwesomeIcon).use(router).mount('#app');

@@ -11,19 +11,19 @@
             <h3>Head Office</h3>
             <div>
                 <li>
-                    <i class="fa-solid fa-map"></i>
+                    <fa icon="fa-solid fa-map" />
                     <p>123 Road, 10 Street, Moscow</p>
                 </li>
                 <li>
-                    <i class="fa-solid fa-envelope"></i>
+                    <fa icon="fa-solid fa-envelope" />
                     <p>contact@example.com</p>
                 </li>
                 <li>
-                    <i class="fa-solid fa-phone"></i>
+                    <fa icon="fa-solid fa-phone" />
                     <p>contact@example.com</p>
                 </li>
                 <li>
-                    <i class="fa-solid fa-clock"></i>
+                    <fa icon="fa-solid fa-clock" />
                     <p>Monday to Saturday: 10:00 am to 18:00 pm</p>
                 </li>
             </div>
@@ -66,23 +66,21 @@
         </div>
     </section>
 
-    <section id="newsletter" class="section-p1 section-m1">
-        <div class="newstext">
-            <h4>Sign Up For Newsletters</h4>
-            <p>Get E-mail updates about our latest shop and <span>special offers.</span>
-            </p>
-        </div>
-        <div class="form">
-            <input type="text" placeholder="Your email address">
-            <button class="normal">Sign Up</button>
-        </div>
-    </section>
+    <newsletters />
 </template>
 
 <script>
-export default {
-    name: 'Contact'
-}
+    import Newsletters from '../components/Newsletters.vue';
+
+    export default {
+        name: 'Contact',
+        components: {
+            Newsletters,
+        },
+        mounted() {
+            document.title = "Contact";
+        }
+    }
 </script>
 
 <style lang="scss" scoped>
@@ -115,11 +113,11 @@ export default {
 }
 #contact-details .details li i{
     font-size: 14px;
-    padding-right: 22px;
 }
 #contact-details .details li p {
     margin: 0;
     font-size: 14px;
+    padding-left: 22px;
 }
 #contact-details .map {
     width: 55%;

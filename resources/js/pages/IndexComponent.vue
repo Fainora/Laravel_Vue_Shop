@@ -45,15 +45,15 @@
                     <span>Brand</span>
                     <h5>{{ product.title }}</h5>
                     <div class="star">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
+                        <fa icon="star" />
+                        <fa icon="star" />
+                        <fa icon="star" />
+                        <fa icon="star" />
+                        <fa icon="star" />
                     </div>
                     <h4>${{ product.price }}</h4>
                 </div>
-                <a href="#"><i class="fa-solid fa-cart-shopping cart"></i></a>
+                <a href="#"><fa icon="cart-shopping" class="cart" /></a>
             </div>
         </div>
     </section>
@@ -74,15 +74,15 @@
                     <span>Brand</span>
                     <h5>{{ product.title }}</h5>
                     <div class="star">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
+                        <fa icon="star" />
+                        <fa icon="star" />
+                        <fa icon="star" />
+                        <fa icon="star" />
+                        <fa icon="star" />
                     </div>
                     <h4>${{ product.price }}</h4>
                 </div>
-                <a href="#"><i class="fa-solid fa-cart-shopping cart"></i></a>
+                <a href="#"><fa icon="cart-shopping" class="cart" /></a>
             </div>
         </div>
     </section>
@@ -117,26 +117,22 @@
         </div>
     </section>
 
-    <section id="newsletter" class="section-p1 section-m1">
-        <div class="newstext">
-            <h4>Sign Up For Newsletters</h4>
-            <p>Get E-mail updates about our latest shop and <span>special offers.</span>
-            </p>
-        </div>
-        <div class="form">
-            <input type="text" placeholder="Your email address">
-            <button class="normal">Sign Up</button>
-        </div>
-    </section>
+    <newsletters />
+
 </template>
 
 <script>
 import axios from 'axios';
+import Newsletters from '../components/Newsletters.vue';
 
 export default {
     name: 'Index',
+    components: {
+        Newsletters,
+    },
     mounted() {
-        this.getProducts()
+        document.title = "My Shop";
+        this.getProducts();
     },
     data() {
         return {
@@ -300,8 +296,8 @@ export default {
     color: var(--text-hover);
 }
 #products .product .cart {
-    width: 40px;
-    height: 40px;
+    width: 30px;
+    height: 30px;
     line-height: 40px;
     border-radius: 50px;
     background-color: #e8f6ea;
@@ -310,6 +306,7 @@ export default {
     position: absolute;
     bottom: 20px;
     right: 10px;
+    padding: 10px;
 }
 
 /* Banner */
@@ -352,7 +349,7 @@ export default {
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
-    background-image: url("images/default.png");
+    background-image: url("images/banners/banner1.webp");
     min-width: 580px;
     height: 50vh;
     background-size: cover;
@@ -360,7 +357,7 @@ export default {
     padding: 30px;
 }
 #sm-banner .banner-box2 {
-    background-image: url("images/default.png");
+    background-image: url("images/banners/banner2.jpeg");
 }
 #sm-banner h4 {
     color: var(--light);;
@@ -394,7 +391,7 @@ export default {
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
-    background-image: url("images/default.png");
+    background-image: url("images/banners/banner3.jpeg");
     min-width: 30%;
     height: 30vh;
     background-size: cover;
@@ -403,10 +400,10 @@ export default {
     margin-bottom: 20px;
 }
 #banner3 .banner-box2 {
-    background-image: url("images/default.png");
+    background-image: url("images/banners/banner4.jpeg");
 }
 #banner3 .banner-box3 {
-    background-image: url("images/default.png");
+    background-image: url("images/banners/banner5.jpeg");
 }
 #banner3 h2 {
     color: var(--light);;
@@ -417,53 +414,6 @@ export default {
     color: #ec544e;
     font-weight: 800;
     font-size: 15px;
-}
-
-/* Newsletter */
-#newsletter {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    align-items: center;
-    background-image: url("images/default.png");
-    background-repeat: no-repeat;
-    background-position: 20% 30%;
-    background-color: #041e42;
-}
-#newsletter h4 {
-    font-size: 22px;
-    font-weight: 700;
-    color: var(--light);;
-}
-#newsletter p {
-    font-size: 14px;
-    font-weight: 600;
-    color: #818ea0;
-}
-#newsletter p span {
-    color: #ffbd27;
-}
-#newsletter .form {
-    display: flex;
-    width: 40%;
-}
-#newsletter input {
-    height: 3.125rem;
-    padding: 0 1.25em;
-    font-size: 14px;
-    width: 100%;
-    border: 1px solid transparent;
-    border-radius: 4px;
-    outline: none;
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
-}
-#newsletter button {
-    background-color: var(--text-hover);
-    color: var(--light);;
-    white-space: nowrap;
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0;
 }
 
 
@@ -539,12 +489,6 @@ export default {
         padding: 0 20px;
     }
     #banner3 .banner-box{
-        width: 100%;
-    }
-    #newsletter {
-        padding: 40px 20px;
-    }
-    #newsletter .form {
         width: 100%;
     }
 }

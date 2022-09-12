@@ -1,5 +1,7 @@
 @extends('admin.layouts.main')
 
+@section('title') {{'Colors'}} @endsection
+
 @section('content')
 
 <div class="content-header">

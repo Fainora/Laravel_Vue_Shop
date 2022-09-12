@@ -527,6 +527,7 @@ class ComposerStaticInite201a4f82e8f0baa85c20a49e462d104
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
         'App\\Http\\Controllers\\API\\Product\\IndexController' => __DIR__ . '/../..' . '/app/Http/Controllers/API/Product/IndexController.php',
+        'App\\Http\\Controllers\\API\\Product\\ShowController' => __DIR__ . '/../..' . '/app/Http/Controllers/API/Product/ShowController.php',
         'App\\Http\\Controllers\\Admin\\CategoryController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/CategoryController.php',
         'App\\Http\\Controllers\\Admin\\ColorController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/ColorController.php',
         'App\\Http\\Controllers\\Admin\\Main\\IndexController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/Main/IndexController.php',

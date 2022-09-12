@@ -92,3 +92,18 @@ button.white {
 body {
     width: 100%;
 }
+
+#pagination {
+    text-align: center;
+}
+#pagination a{
+    text-decoration: none;
+    background-color: var(--text-hover);
+    padding: 15px 20px;
+    border-radius: 4px;
+    color: var(--light);;
+    font-weight: 600;
+    margin: 0 2px;
+    cursor: pointer;
+}
+

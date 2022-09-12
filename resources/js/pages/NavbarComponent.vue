@@ -51,7 +51,7 @@
                         href: '/contact'
                     },
                     {
-                        title: 'Cart',
+                        title: "",
                         href: '/cart'
                     },
                 ]

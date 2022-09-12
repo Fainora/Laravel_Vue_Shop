@@ -1,5 +1,7 @@
 @extends('admin.layouts.main')
 
+@section('title') {{'Edit'}} @endsection
+
 @section('content')
 
     <div class="content-header">

@@ -76,7 +76,10 @@
 
 <script>
 export default {
-    name: 'Cart'
+    name: 'Cart',
+    mounted() {
+        document.title = "Cart";
+    }
 }
 </script>
 
