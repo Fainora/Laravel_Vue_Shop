@@ -10,7 +10,7 @@
             :posts="posts"
         />
 
-        <div v-else><h3>Идет загрузка...</h3></div>
+        <div v-else><loading /></div>
     </section>
 
     <section id="pagination" class="section-p1">
@@ -31,12 +31,14 @@
     import PostList from '../components/PostList.vue';
     import { usePosts } from '@/hooks/usePosts.js';
     import Newsletters from '../components/Newsletters.vue';
+    import Loading from '../components/UI/Loading.vue';
 
     export default {
         name: 'Blog',
         components: {
             PostList,
             Newsletters,
+            Loading
         },
         data() {
             return {

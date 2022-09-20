@@ -1,5 +1,6 @@
 <template>
     <section id="newsletter" class="section-p1 section-m1">
+        <div class="dark"></div>
         <div class="newstext">
             <h4>Sign Up For Newsletters</h4>
             <p>Get E-mail updates about our latest shop and <span>special offers.</span>
@@ -28,6 +29,10 @@
     //background-repeat: no-repeat;
     //background-position: 20% 30%;
     background-color: #041e42;
+    position: relative;
+}
+.newstext {
+    z-index: 1;
 }
 #newsletter h4 {
     font-size: 22px;
@@ -37,7 +42,7 @@
 #newsletter p {
     font-size: 14px;
     font-weight: 600;
-    color: #818ea0;
+    color: var(--light);
 }
 #newsletter p span {
     color: #ffbd27;
@@ -45,6 +50,7 @@
 #newsletter .form {
     display: flex;
     width: 40%;
+    z-index: 1;
 }
 #newsletter input {
     height: 3.125rem;
@@ -63,6 +69,15 @@
     white-space: nowrap;
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
+}
+.dark {
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    position: absolute;
+    left: 0;
+    opacity: 0.3;
+    z-index: 0;
 }
 
 @media (max-width: 477px) {

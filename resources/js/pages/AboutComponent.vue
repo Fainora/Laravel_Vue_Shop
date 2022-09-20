@@ -26,43 +26,20 @@
         </div>
     </section>
 
-    <section id="first-section" class="section-p1">
-        <div class="fi-box">
-            <img src="images/default.png" alt="">
-            <h6>Free Shipping</h6>
-        </div>
-        <div class="fi-box">
-            <img src="images/default.png" alt="">
-            <h6>Free Shipping</h6>
-        </div>
-        <div class="fi-box">
-            <img src="images/default.png" alt="">
-            <h6>Free Shipping</h6>
-        </div>
-        <div class="fi-box">
-            <img src="images/default.png" alt="">
-            <h6>Free Shipping</h6>
-        </div>
-        <div class="fi-box">
-            <img src="images/default.png" alt="">
-            <h6>Free Shipping</h6>
-        </div>
-        <div class="fi-box">
-            <img src="images/default.png" alt="">
-            <h6>Free Shipping</h6>
-        </div>
-    </section>
+    <icon-section />
 
     <newsletters />
 </template>
 
 <script>
     import Newsletters from '../components/Newsletters.vue';
+    import IconSection from '../components/IconSection.vue';
 
     export default {
         name: 'About',
         components: {
             Newsletters,
+            IconSection,
         },
         mounted() {
             document.title = "About";

@@ -12,10 +12,11 @@ $font-stack:    Helvetica, sans-serif;
 
 :root {
     --text: #222;
-    --bg: #e4e7f3;
+    --bg: #F5F5F5;
     --additional: #465b52;
-    --text-header: #1a1a1a;
-    --text-hover: #088178;
+    --text: #363636;
+    --text-additional: #3F3F3F;
+    --text-hover: #F1553C;
     --light: #fff;
     --dark: #000;
     --border: #cce7d0;
@@ -91,6 +92,7 @@ button.white {
 
 body {
     width: 100%;
+    background-color: var(--bg);
 }
 
 #pagination {

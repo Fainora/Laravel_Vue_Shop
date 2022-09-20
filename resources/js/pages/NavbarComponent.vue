@@ -1,23 +1,29 @@
 <template>
     <section id="nav">
         <!-- <a href="#"><img src="images/logo.png" alt="logo"></a> -->
-        <a href="/"><h3>Logo</h3></a>
 
-            <ul id="navbar">
-                <!-- <li><a class="active" href="index.html">Home</a></li>
-                <li><a href="shop.html">Shop</a></li>
-                <li><a href="blog.html">Blog</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="contact.html">Contact</a></li>
-                <li id="lg-bag"><a href="cart.html"><i class="fa-solid fa-bag-shopping"></i></a></li> -->
-                <li v-for="link in links">
-                    <router-link :to="link.href">{{ link.title }}</router-link>
-                </li>
-                <a href="#" id="close"><i class="fa-solid fa-xmark"></i></a>
-            </ul>
-        </div>
+        <ul id="navbar-left">
+            <div class="logo">
+                <a href="/"><h3><strong><fa icon="fa-brands fa-shopify" /> Shop</strong></h3></a>
+            </div>
+            <li><router-link to="/" exact>Home</router-link></li>
+            <li><router-link to="/shop">Shop</router-link></li>
+            <li><router-link to="/blog">Blog</router-link></li>
+            <li><router-link to="/about">About</router-link></li>
+            <li><router-link to="/contact">Contact</router-link></li>
+
+            <!-- <li v-for="link in links">
+                <router-link :to="link.href">{{ link.title }}</router-link>
+            </li>
+            <a href="#" id="close"><fa icon="fa-solid fa-xmark" /></a> -->
+        </ul>
+        <ul id="navbar-right">
+            <li><router-link to="/account">My Account</router-link></li>
+            <li id="lg-bag"><router-link to="/cart"><fa icon="fa-solid fa-bag-shopping"></fa></router-link></li>
+        </ul>
+
         <div id="mobile">
-            <a href="cart.html"><i class="fa-solid fa-bag-shopping"></i></a>
+            <router-link to="/cart"><fa icon="fa-solid fa-bag-shopping"></fa></router-link>
             <i id="bar" class="fa-solid fa-bars"></i>
         </div>
     </section>
@@ -31,7 +37,7 @@
                 links: [
                     {
                         title: 'Home',
-                        href: '/'
+                        href: '/',
                     },
                     {
                         title: 'Shop',
@@ -50,12 +56,16 @@
                         href: '/contact'
                     },
                     {
-                        title: "",
+                        title: 'My Account',
+                        href: '/account'
+                    },
+                    {
+                        title: 'Cart',
                         href: '/cart'
                     },
                 ]
             }
-        }
+        },
     }
 </script>
 
@@ -65,52 +75,68 @@
     align-items: center;
     justify-content: space-between;
     padding: 20px 80px;
-    background: var(--bg);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.06);
+    background: var(--light);
     z-index: 100;
     position: sticky;
     top: 0;
     left: 0;
-}
+    border-bottom: 2px solid #EEEEEE;
 
-#navbar {
+    a {
+        text-decoration: none;
+        color: var(--text);
+    }
+
+    h3 {
+        margin-bottom: 0;
+    }
+
+    ul {
+        margin: 0;
+    }
+}
+#navbar-left, #navbar-right {
     display: flex;
     align-items: center;
-    justify-content: center;
-}
 
-#navbar li {
-    list-style: none;
-    padding: 0 20px;
-    position: relative;
-}
+    .logo {
+        margin-right: 30px;
+    }
 
-#navbar li a {
-    text-decoration: none;
-    font-size: 16px;
-    font-weight: 600;
-    color: var(--text-header);
-    transition: 0.3s ease;
-}
+    li {
+        list-style: none;
+        padding: 0 20px;
+        position: relative;
 
-#navbar li a:hover {
-    color: var(--text-hover);
-}
+        a {
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--text-header);
+            transition: 0.3s ease;
+        }
 
-#navbar li a:hover,
-#navbar li a.active {
-    color: var(--text-hover);
-}
+        a:hover, a.router-link-active {
+            color: var(--text-hover);
+        }
+        a.router-link-active::after {
+            width: 30%;
+        }
 
-#navbar li a.active::after,
-#navbar li a:hover::after {
-    content: "";
-    width: 30%;
-    height: 2px;
-    background: var(--text-hover);
-    position: absolute;
-    bottom: -4px;
-    left: 20px;
+        a::after {
+            content: "";
+            width: 0%;
+            height: 2px;
+            background: var(--text-hover);
+            position: absolute;
+            bottom: -4px;
+            left: 20px;
+            transition: width .3s ease-in-out;
+        }
+        a:hover::after {
+            width: 30%;
+        }
+    }
 }
 
 #mobile {
