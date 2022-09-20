@@ -3,7 +3,6 @@
         <!-- <a href="#"><img src="images/logo.png" alt="logo"></a> -->
         <a href="/"><h3>Logo</h3></a>
 
-        <div>
             <ul id="navbar">
                 <!-- <li><a class="active" href="index.html">Home</a></li>
                 <li><a href="shop.html">Shop</a></li>
