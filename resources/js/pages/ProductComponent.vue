@@ -3,7 +3,7 @@
     <div v-if="!not_found">
         <section id="prodetails" class="section-p1">
             <div class="single-pro-image">
-                <img :src="'/storage/' + product.preview_image" :style="{width: '100%'}" id="MainImage" alt="">
+                <img :src="'/storage/' + product.preview_image" :style="{width: '100%'}" id="MainImage" :alt="title">
 
                 <div class="small-img-group">
                     <div class="small-img-col">
@@ -32,8 +32,8 @@
                     <option>Small</option>
                     <option>Large</option>
                 </select>
-                <input type="number" value="1">
-                <button class="normal">Add To Cart</button>
+                <input type="number" id="quantity" value="1" min="0" max="100" />
+                <button @click.prevent="addToCart(product)" class="normal">Add To Cart</button>
                 <h4>{{ product.description }}</h4>
                 <span>{{ product.content }}</span>
             </div>
@@ -47,10 +47,14 @@
         <h2>Featured Products</h2>
         <p>Summer Collection New Morden Design</p>
         <div class="product-container">
-            <product-item
+            <div id="product-list" v-if="loading" >
+                <loading />
+            </div>
+            <product-item v-else
                 v-for="product in products"
+                :id="product.id"
                 :title="product.title"
-                :image_url="'/' + product.image_url"
+                :image_url="product.image_url"
                 :price="product.price"
             />
         </div>
@@ -73,16 +77,19 @@
 <script>
 import axios from 'axios';
 import ProductItem from '../components/ProductItem.vue';
+import Loading from '../components/UI/Loading.vue';
 
 export default {
     name: 'Product',
     components: {
         ProductItem,
+        Loading,
     },
     data: () => ({
         product: [],
         products: [],
         not_found: false,
+        loading: true,
     }),
     mounted() {
         document.title = this.product.title;
@@ -94,6 +101,7 @@ export default {
             axios.get(`/api/products/${id}`)
             .then(res => {
                 this.product = res.data;
+                console.log(this.product);
             })
             .catch(err => {
                 this.not_found = true;
@@ -103,7 +111,37 @@ export default {
             axios.get('/api/products')
             .then(res => {
                 this.products = res.data.data;
+                this.loading = false;
+                console.log(this.products);
             })
+        },
+        addToCart(product) {
+            let cart = localStorage.getItem('cart');
+            let qty = Number(document.getElementById('quantity').value) ?? 1;
+
+            let newProduct = [
+                {
+                    'id': product.id,
+                    'quantity': qty,
+                    'title': product.title,
+                    'image_url': product.preview_image,
+                    'price': product.price,
+                }
+            ]
+
+            if(!cart) {
+                localStorage.setItem('cart', JSON.stringify(newProduct));
+            } else {
+                cart = JSON.parse(cart);
+                cart.forEach(productInCart => {
+                    if(productInCart.id === product.id) {
+                        productInCart.quantity = Number(productInCart.quantity) + Number(qty);
+                        newProduct = null;
+                    }
+                })
+                Array.prototype.push.apply(cart, newProduct);
+                localStorage.setItem('cart', JSON.stringify(cart));
+            }
         }
     }
 }

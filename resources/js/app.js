@@ -16,7 +16,6 @@ app.component('v-navbar', NavbarComponent);
 import FooterComponent from './pages/FooterComponent.vue';
 app.component('v-footer', FooterComponent);
 
-
 app.config.globalProperties.axios = axios;
 
 library.add(fas, fab);

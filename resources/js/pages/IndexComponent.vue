@@ -14,13 +14,14 @@
     <section id="products" class="section-p1">
         <h2>Our Products</h2>
         <p>Summer Collection New Morden Design</p>
+
         <div class="product-container">
             <div id="product-list" v-if="loading" >
                 <loading />
             </div>
             <product-item v-else
                 v-for="product in products"
-                :key="product.id"
+                :id="product.id"
                 :title="product.title"
                 :image_url="product.image_url"
                 :price="product.price"
@@ -43,7 +44,7 @@
             </div>
             <product-item v-else
                 v-for="product in new_products"
-                :key="product.id"
+                :id="product.id"
                 :title="product.title"
                 :image_url="product.image_url"
                 :price="product.price"
@@ -151,7 +152,7 @@ export default {
         height: 100%;
         position: absolute;
         background-repeat: no-repeat;
-        right: 8em;
+        right: 7em;
         top: 0;
         background-size: cover;
         z-index: -5;
@@ -305,12 +306,30 @@ export default {
 }
 
 @media (max-width: 1280px) {
+    #header {
+        .banner-text {
+            width: 430px;
+        }
+        .header-image {
+            right: 2em;
+        }
+    }
+
     #sm-banner .banner-box {
         min-width: 450px;
     }
 }
 
 @media (max-width: 1100px) {
+    #header {
+        .banner-text {
+            width: 380px;
+        }
+        .header-image {
+            right: 0;
+        }
+    }
+
     #sm-banner .banner-box {
         min-width: 400px;
     }

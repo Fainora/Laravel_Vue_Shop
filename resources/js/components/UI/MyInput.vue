@@ -1,5 +1,10 @@
 <template>
-    <input :value="modelValue" @input="updateInput" class="input" type="text">
+    <!-- <input :value="modelValue" @input="updateInput" class="input" type="text"> -->
+    <div class="input">
+        <span class="minus">-</span>
+        <span class="num">01</span>
+        <span class="plus">+</span>
+    </div>
 </template>
 
 <script>

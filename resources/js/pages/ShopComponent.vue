@@ -80,6 +80,7 @@
                     </div>
                     <product-item v-else
                         v-for="product in products"
+                        :id="product.id"
                         :title="product.title"
                         :image_url="product.image_url"
                         :price="product.price"
@@ -142,7 +143,7 @@ export default {
             .then(res => {
                 this.colors = res.data.data;
             })
-        }
+        },
     }
 }
 </script>

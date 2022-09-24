@@ -29,6 +29,7 @@ class Product extends Model
 
     public function getImageUrlAttribute()
     {
-        return 'storage/' . $this->preview_image;
+        //return 'storage/' . $this->preview_image;
+        return $this->preview_image;
     }
 }

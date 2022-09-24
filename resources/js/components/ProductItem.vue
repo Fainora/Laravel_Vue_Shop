@@ -1,10 +1,11 @@
 <template>
-    <div class="product">
+    <a :href="'/product/' + id" class="product">
         <div class="image">
-            <img :src="image_url" alt="">
+            <img :src="'/storage/' + image_url" alt="">
         </div>
         <div class="description">
             <h5>{{ title }}</h5>
+            {{ id }}
             <div class="star">
                 <fa icon="star" />
                 <fa icon="star" />
@@ -14,16 +15,18 @@
             </div>
             <h4>${{ price }}</h4>
         </div>
-        <a href="#"><fa icon="cart-shopping" class="cart" /></a>
-    </div>
+        <a @click.prevent="addToCart(id, title, image_url, price)" href="#"><fa icon="cart-shopping" class="cart" /></a>
+    </a>
 </template>
 
 <script>
 export default {
     props: {
+        id: {
+            type: Number,
+        },
         title: {
             type: String,
-            default: 'NULL'
         },
         image_url: {
             type: String,
@@ -32,6 +35,37 @@ export default {
         price: {
             type: Number,
             default: 0
+        }
+    },
+    mounted() {
+        document.title = 'Продукт';
+    },
+    methods: {
+        addToCart(id, title, image_url, price) {
+            let cart = localStorage.getItem('cart');
+            let newProduct = [
+                {
+                    'id': id,
+                    'quantity': 1,
+                    'title': title,
+                    'image_url': image_url,
+                    'price': price
+                }
+            ]
+
+            if(!cart) {
+                localStorage.setItem('cart', JSON.stringify(newProduct));
+            } else {
+                cart = JSON.parse(cart);
+                cart.forEach(productInCart => {
+                    if(productInCart.id === id) {
+                        productInCart.quantity = Number(productInCart.quantity) + 1;
+                        newProduct = null;
+                    }
+                })
+                Array.prototype.push.apply(cart, newProduct);
+                localStorage.setItem('cart', JSON.stringify(cart));
+            }
         }
     }
 }
@@ -49,6 +83,8 @@ export default {
     transition: 0.2s ease;
     position: relative;
     background-color: var(--light);
+    text-decoration: none;
+    color: var(--text);
 
     .image {
         height: 300px;
@@ -115,6 +151,7 @@ export default {
     -moz-box-shadow: 0px 10px 10px 0px rgba(34, 60, 80, 0.1);
     box-shadow: 0px 10px 10px 0px rgba(34, 60, 80, 0.1);
     transform: translateY(-15px);
+    color: var(--text);
 }
 
 .product img {
