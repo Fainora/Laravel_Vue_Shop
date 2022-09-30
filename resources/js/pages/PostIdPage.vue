@@ -7,7 +7,6 @@
 
 <script>
     import PostItem from '../components/PostItem.vue';
-    import { usePosts } from '@/hooks/usePosts.js';
 
     export default {
         name: 'Post',

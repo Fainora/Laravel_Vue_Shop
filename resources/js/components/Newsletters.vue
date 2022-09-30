@@ -1,5 +1,5 @@
 <template>
-    <section id="newsletter" class="section-p1 section-m1">
+    <section id="newsletter" class="section-p1 section-m1" :style="bgImage">
         <div class="dark"></div>
         <div class="newstext">
             <h4>Sign Up For Newsletters</h4>
@@ -15,7 +15,11 @@
 
 <script>
     export default {
-
+        computed: {
+            bgImage() {
+                return `background-image: url("images/banners/b14.png")`;
+            }
+        }
     }
 </script>
 
@@ -25,9 +29,8 @@
     justify-content: space-between;
     flex-wrap: wrap;
     align-items: center;
-    background-image: url("images/banners/banner_newsletters.jpg");
-    //background-repeat: no-repeat;
-    //background-position: 20% 30%;
+    background-repeat: no-repeat;
+    background-position: 20% 30%;
     background-color: #041e42;
     position: relative;
 }
@@ -53,7 +56,7 @@
     z-index: 1;
 }
 #newsletter input {
-    height: 3.125rem;
+    // height: 3.125rem;
     padding: 0 1.25em;
     font-size: 14px;
     width: 100%;

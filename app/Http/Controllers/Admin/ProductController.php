@@ -127,16 +127,18 @@ class ProductController extends Controller
      */
     public function update(UpdateRequest $request, Product $product)
     {
-        if(isset($product->preview_image)) {
-            Storage::disk('public')->delete('images', $product->preview_image);
-        }
+        // if(isset($product->preview_image)) {
+        //     Storage::disk('public')->delete('images', $product->preview_image);
+        // }
 
         $data = $request->validated();
 
         if(isset($data['preview_image'])) {
+            Storage::disk('public')->delete('images', $product->preview_image);
             $data['preview_image'] = Storage::disk('public')->put('/images', $data['preview_image']);
         } else {
-            $data['preview_image'] = '/images/nophoto.png';
+            // $data['preview_image'] = '/images/nophoto.png';
+            $data['preview_image'] = $product->preview_image;
         }
 
         if(isset($data['tags'])) {

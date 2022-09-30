@@ -10,10 +10,10 @@ import router from './router';
 const app = createApp({});
 
 
-import NavbarComponent from './pages/NavbarComponent.vue';
+import NavbarComponent from './components/NavbarComponent.vue';
 app.component('v-navbar', NavbarComponent);
 
-import FooterComponent from './pages/FooterComponent.vue';
+import FooterComponent from './components/FooterComponent.vue';
 app.component('v-footer', FooterComponent);
 
 app.config.globalProperties.axios = axios;

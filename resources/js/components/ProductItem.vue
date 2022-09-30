@@ -1,11 +1,10 @@
 <template>
     <a :href="'/product/' + id" class="product">
         <div class="image">
-            <img :src="'/storage/' + image_url" alt="">
+            <img :src="'/storage/' + image_url" :alt="title">
         </div>
         <div class="description">
             <h5>{{ title }}</h5>
-            {{ id }}
             <div class="star">
                 <fa icon="star" />
                 <fa icon="star" />
@@ -38,7 +37,7 @@ export default {
         }
     },
     mounted() {
-        document.title = 'Продукт';
+        //document.title = 'Продукт';
     },
     methods: {
         addToCart(id, title, image_url, price) {
@@ -108,6 +107,10 @@ export default {
             font-size: 12px;
         }
 
+        .star {
+            color: #ebd741;
+        }
+
         h4 {
             padding-top: 7px;
             font-size: 18px;
@@ -154,8 +157,4 @@ export default {
     color: var(--text);
 }
 
-.product img {
-    width: 100%;
-    border-radius: 20px;
-}
 </style>
